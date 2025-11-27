@@ -2,12 +2,30 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ---
-id: topup
-title: 🔌 API Topup Saldo
-sidebar_label: API Topup
+Cek Saldo
 ---
 
-Gunakan endpoint ini untuk melakukan **topup saldo pengguna**.
+Gunakan endpoint ini untuk melakukan **Cek saldo pengguna**.
+
+:::info title="📦 Paket Akrab & Circle Global" collapsible=true
+
+```json
+{
+  "status": true,
+  "message": "Data ditemukan",
+  "data": [
+    {
+      "nama": "Paket Akrab EXTRA",
+      "deskripsi": "Paket Data Super MINI Plus"
+    },
+    {
+      "nama": "Paket Akrab SUPERMIX",
+      "deskripsi": "Paket Data Super BIG LITE"
+    }
+  ]
+}
+
+:::
 
 ---
 
@@ -20,6 +38,7 @@ Gunakan endpoint ini untuk melakukan **topup saldo pengguna**.
 | **Content-Type** | `application/json` |
 
 ---
+
 
 ## 📥 Parameter
 
