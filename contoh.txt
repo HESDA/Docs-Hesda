@@ -1,0 +1,203 @@
+:::info title="📦 Paket Akrab & Circle Global" collapsible=true
+
+```json
+{
+  "status": true,
+  "message": "Data ditemukan",
+  "data": [
+    {
+      "nama": "Paket Akrab EXTRA",
+      "deskripsi": "Paket Data Super MINI Plus"
+    },
+    {
+      "nama": "Paket Akrab SUPERMIX",
+      "deskripsi": "Paket Data Super BIG LITE"
+    }
+  ]
+}
+
+:::
+
+## 📘 Contoh Request
+
+```bash
+curl -X POST https://api.hesdapay.com/v1/topup \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer 1234567890abcdef" \
+-d '{
+  "user_id": "USR001",
+  "nominal": 50000,
+  "metode": "qris"
+},
+```
+
+---
+
+
+
+:::note
+
+Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::tip response
+
+Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+```json
+{
+  "status": true,
+  "message": "Topup sedang diproses",
+  "data": {
+    "reff_id": "TP20251020001",
+    "nominal": 50000,
+    "metode": "qris",
+    "waktu": "2025-10-20 12:33:22"
+  }
+}
+:::
+
+:::::info[Parent]
+
+Parent content
+```json
+    {
+      "status": true,
+      "message": "Topup sedang diproses",
+      "data": {
+        "reff_id": "TP20251020001",
+        "nominal": 50000,
+        "metode": "qris",
+        "waktu": "2025-10-20 12:33:22"
+      }
+    }
+    ```
+
+::::danger[Child]
+
+Child content
+```json
+    {
+      "status": true,
+      "message": "Topup sedang diproses",
+      "data": {
+        "reff_id": "TP20251020001",
+        "nominal": 50000,
+        "metode": "qris",
+        "waktu": "2025-10-20 12:33:22"
+      }
+    }
+    ```
+
+:::tip[Deep Child]
+
+Deep child content
+```json
+    {
+      "status": true,
+      "message": "Topup sedang diproses",
+      "data": {
+        "reff_id": "TP20251020001",
+        "nominal": 50000,
+        "metode": "qris",
+        "waktu": "2025-10-20 12:33:22"
+      }
+    }
+    ```
+
+:::
+
+::::
+
+:::::
+
+:::info
+
+Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
+<Tabs>
+  <TabItem value="apple" label="Apple">This is an apple 🍎</TabItem>
+  <TabItem value="orange" label="Orange">This is an orange 🍊</TabItem>
+  <TabItem value="banana" label="Banana">This is a banana 🍌</TabItem>
+</Tabs>
+
+:::
+
+:::warning
+
+Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::danger
+
+Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+
+## 📥 Parameter
+
+| Nama | Tipe | Wajib | Keterangan |
+|------|------|--------|-------------|
+| `user_id` | `string` | ✅ | ID unik pengguna |
+| `nominal` | `number` | ✅ | Nominal topup dalam rupiah |
+| `metode` | `string` | ✅ | Jenis metode pembayaran (`bank`, `qris`, `ewallet`) |
+| `reff_id` | `string` | ❌ | Kode unik referensi transaksi (opsional, auto generate jika kosong) |
+
+---
+
+## 📘  Response
+
+:::info 🧪 Response
+
+Beberapa contoh response berdasarkan status transaksi:
+
+<Tabs>
+  <TabItem value="success" label="🟢 Success">
+    ```json
+    {
+      "status": true,
+      "message": "Topup sedang diproses",
+      "data": {
+        "reff_id": "TP20251020001",
+        "nominal": 50000,
+        "metode": "qris",
+        "waktu": "2025-10-20 12:33:22"
+      }
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="pending" label="🟡 Pending">
+    ```json
+    {
+      "status": false,
+      "message": "Unauthorized"
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="failed" label="🔴 Failed">
+    ```json
+    {
+      "status": false,
+      "message": "Saldo tidak mencukupi atau server gangguan",
+      "data": null
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="saldo" label="🔴 Saldo Habis">
+    ```json
+    {
+      "status": false,
+      "message": "Saldo tidak mencukupi atau server gangguan",
+      "data": null
+    }
+    ```
+  </TabItem>
+
+</Tabs>
+
+:::
