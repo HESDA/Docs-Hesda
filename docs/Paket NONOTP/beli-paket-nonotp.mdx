@@ -1,0 +1,93 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+Beli Paket NONOTP
+---
+Gunakan endpoint ini untuk melakukan **Pembelian Paket NONOTP**.
+
+---
+
+## 🧭 Endpoint
+| Atribut | Nilai |
+|----------|-------|
+| **URL** | `https://api.hesda-store.com/v2/beli/nonotp` |
+| **Method** | `POST` |
+| **Auth** | Basic Auth (`Authorization: email & password`) |
+| **Content-Type** | `application/json` |
+
+---
+
+## 📥 Body
+
+| Nama | Tipe | Wajib | Keterangan |
+|------|------|--------|-------------|
+| `hesdastore` | `string` | ✅ | `API Key` |
+| `package_id` | `string` | ✅ | `package id yang ingin dibeli diambil dari list paket NONOTP` |
+| `uri` | `string` | ✅ | `package_purchase_non_otp` |
+| `no_hp` | `number` | ✅ | `Nomor XL`|
+| `price_or_fee` | `string` | ✅ | `diambil dari harga_int di list paket otp` |
+| `url_callback` | `string` | ✅ | `URL Callback Anda' |
+
+---
+
+:::info 🧪 Response JSON
+
+Beberapa contoh response berdasarkan status transaksi:
+
+<Tabs>
+<TabItem value="Pending" label=" 🟡 Pending">
+    ```json
+    {
+        "statusCode": 200,
+        "status": true,
+        "message": "Transkasi Pending, Mohon Tunggu Sampai Paket Masuk, Silahkan Cek Secara Berkala",
+        "data": {
+            "msisdn": "081998950487",
+            "package_code": "TEST",
+            "nama_paket": "Akrab XXL",
+            "trx_id": "L8Q12p8WM",
+            "status": "PENDING",
+        }
+    }
+    ```
+  </TabItem>
+  <TabItem value="success" label="🟢 Callback Success">
+    ```json
+    {
+        "status":true,
+        "message":"Berhasil",
+            "data":{
+                "parent":"62877718722",
+                "msisdn":"6281804631727",
+                "trx_id":"u0YqywzbCN",
+                "package_name":"Akrab",
+                "package_id":"RWxWL0cvcUJON0JEbGFxYytQSkpkZw",
+                "status":"SUCCESS"}
+                    
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="Failed" label="🔴 Callback Failed">
+    ```json
+    {
+        "status":true,
+        "message":"Berhasil",
+            "data":{
+                "parent":"62877718722",
+                "msisdn":"6281804631727",
+                "trx_id":"u0YqywzbCN",
+                "package_name":"Akrab",
+                "package_id":"RWxWL0cvcUJON0JEbGFxYytQSkpkZw",
+                "status":"FAILED"}
+                    
+    }
+    ```
+  </TabItem>
+
+</Tabs>
+
+:::
+
+---

@@ -1,0 +1,94 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+Cek Stok Akrab
+---
+Gunakan endpoint ini untuk melihat **Cek Stok Akrab**.
+
+---
+
+## 🧭 Endpoint
+| Atribut | Nilai |
+|----------|-------|
+| **URL** | `https://api.hesda-store.com/v2/cek_stok_akrab?hesdastore={APIKEY}` |
+| **Method** | `GET` |
+| **Auth** | Basic Auth (`Authorization: email & password`) |
+| **Content-Type** | `application/json` |
+
+---
+
+## 📥 Params
+
+| Nama | Tipe | Wajib | Keterangan |
+|------|------|--------|-------------|
+| `hesdastore` | `string` | ✅ | `API Key` |
+
+---
+
+:::info 🧪 Response JSON
+
+Beberapa contoh response berdasarkan status transaksi:
+
+<Tabs>
+  <TabItem value="success" label="🟢 Success">
+    ```json
+    {
+    "status": true,
+    "message": "Data ditemukan",
+    "data": [
+        {
+            "id": "xl_big_plus",
+            "show_name": "BIG Plus",
+            "stock": "0"
+        },
+        {
+            "id": "xl_only_v2",
+            "show_name": "Super Mini Promo",
+            "stock": "121"
+        },
+        {
+            "id": "xxl_rw_v2",
+            "show_name": "Super Jumbo",
+            "stock": "77"
+        },
+        {
+            "id": "xl_no_rw",
+            "show_name": "Mini",
+            "stock": "138"
+        },
+        {
+            "id": "xl_rw",
+            "show_name": "Big",
+            "stock": "200"
+        },
+        {
+            "id": "xxl_rw",
+            "show_name": "Jumbo",
+            "stock": "0"
+        },
+        {
+            "id": "xl_rw_mega",
+            "show_name": "Mega Big",
+            "stock": "87"
+        },
+    ]
+}
+    ```
+  </TabItem>
+
+  <TabItem value="failed" label="🔴 Failed">
+    ```json
+    {
+        "status": false,
+        "message": "Error",
+        "data": []
+    }
+    ```
+  </TabItem>
+
+</Tabs>
+
+:::
+
+---

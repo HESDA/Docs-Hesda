@@ -1,0 +1,67 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+Delete Pengelola
+---
+Gunakan endpoint ini untuk melakukan **Delete Pengelola**.
+
+---
+
+## 🧭 Endpoint
+| Atribut | Nilai |
+|----------|-------|
+| **URL** | `https://api.hesda-store.com/v2/akrab/addPengelola` |
+| **Method** | `POST` |
+| **Auth** | Basic Auth (`Authorization: email & password`) |
+| **Content-Type** | `application/json` |
+
+---
+
+## 📥 Body
+
+| Nama | Tipe | Wajib | Keterangan |
+|------|------|--------|-------------|
+| `hesdastore` | `string` | ✅ | `API Key` |
+| `package_id` | `string` | ✅ | 'diambil dari list package id'|
+| `parent_msisdn` | `number` | ✅ | Nomor Pengelola |
+
+---
+
+:::info 🧪 Response JSON
+
+Beberapa contoh response berdasarkan status transaksi:
+
+<Tabs>
+  <TabItem value="success" label="🟢 Success">
+    ```json
+    {
+        "status": true,
+        "message": "Pengelola berhasil ditambahkan!",
+        "data": {
+            "id_parent": "bStlR1JhcUkrZzlhYmdURWRMNUlaQQ",
+            "trx_id": "Dgq4NUAG34-UW5oaVUrdGdGYXV0bEMyL3JzbXVQdw-1748418335-x9opSlhIAs",
+            "parent_msisdn": "6287883231313",
+            "start_date": "28 May 2025 - 09:31:47",
+            "end_date": "26 Jun 2025 - 00:00:00"
+        }
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="failed" label="🔴 Failed">
+    ```json
+    {
+        "statusCode": 200,
+        "status": false,
+        "message": "Terjadi kesalahan, pastikan nomor XL/AXIS/LIVEON yang kamu masukkan benar (terdaftar NIK & KK) dan mohon coba lagi! Error Message: User not found | Error Description: -",
+        "data": []
+    }
+    ```
+  </TabItem>
+
+</Tabs>
+
+:::
+
+---

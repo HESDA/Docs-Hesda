@@ -1,0 +1,88 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+List Paket NONOTP
+---
+Gunakan endpoint ini untuk melihat **List Paket NONOTP**.
+
+---
+
+## 🧭 Endpoint
+| Atribut | Nilai |
+|----------|-------|
+| **URL** | `https://api.hesda-store.com/v2/list_paket?hesdastore={APIKEY}&jenis=nonotp` |
+| **Method** | `GET` |
+| **Auth** | Basic Auth (`Authorization: email & password`) |
+| **Content-Type** | `application/json` |
+
+---
+
+## 📥 Params
+
+| Nama | Tipe | Wajib | Keterangan |
+|------|------|--------|-------------|
+| `hesdastore` | `string` | ✅ | `API Key` |
+| `jenis` | `string` | ✅ | Jenis metode (`nonotp`) |
+
+---
+
+:::info 🧪 Response JSON
+
+Beberapa contoh response berdasarkan status transaksi:
+
+<Tabs>
+  <TabItem value="success" label="🟢 Success">
+    ```json
+    {
+        "status": true,
+        "message": "Data ditemukan",
+        "data": [
+            {
+                "package_code": "XLBIGPLUS",
+                "jenis": "nonotp",
+                "package_name_show": "Akrab Anggota BIG Plus - [Resmi Begaransi]",
+                "package_description_show": "• Paket Resmi.\r\n• 30 Hari GARANSI.\r\n• JIKA MASIH TERDAFTAR AKRAB, UNREG WAJIB VIA MYXL\r\n• Bisa untuk semua Area.\r\n• Bisa untuk XL / AXIS / LIVEON.\r\n• Tidak boleh ada paket akrab/bonus paket akrab yang masih aktif\r\n• Kuota bersifat full reguler 24 jam.\r\n• Total kuota yang didapat:\r\n✅ <b>AREA 1 = 35GB</b>\r\n✅ <b>AREA 2 = 38GB</b>\r\n✅ <b>AREA 3 = 49GB</b>\r\n✅ <b>AREA 4 = 73GB</b>\r\n• Cek area kamu di Sidompul Panel\r\n• Harap Pastikan Cek Stock Dulu Sebelum Order\r\n• MEMERLUKAN WAKTU 10-30 DETIK JANGAN TINGGALKAN HALAMAN\r\n• KUOTA AKAN MASUK SEKITAR 1-5 MENIT SETELAH ORDER",
+                "metode": 1,
+                "unik": "Akrab",
+                "no_need_login": "1",
+                "can_multi_trx": "0",
+                "harga_int": 62000,
+                "harga": "Rp. 62.000",
+                "package_id": "ckVFVVd3Q05kMWtVaVdDTUxVZW5jQQ",
+                "payment_method": []
+            },
+            {
+                "package_code": "TEST_PAKET",
+                "jenis": "nonotp",
+                "package_name_show": "TEST DOANG",
+                "package_description_show": "",
+                "metode": 2,
+                "unik": null,
+                "no_need_login": "1",
+                "can_multi_trx": "0",
+                "harga_int": 1000,
+                "harga": "Rp. 1.000",
+                "package_id": "MGF6UFJwWFczTFRNVGhtR05IUEJTdw",
+                "payment_method": []
+            },
+        ]
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="failed" label="🔴 Failed">
+    ```json
+    {
+        "status": false,
+        "message": "Error",
+        "data": []
+    }
+    ```
+  </TabItem>
+
+</Tabs>
+
+:::
+
+---

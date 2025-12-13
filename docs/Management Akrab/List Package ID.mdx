@@ -1,0 +1,124 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+List Package ID
+---
+Gunakan endpoint ini untuk melihat **List Package ID**.
+
+---
+
+## 🧭 Endpoint
+| Atribut | Nilai |
+|----------|-------|
+| **URL** | `https://api.hesda-store.com/v2/list_paket?hesdastore={APIKEY}&jenis={}` |
+| **Method** | `GET` |
+| **Auth** | Basic Auth (`Authorization: email & password`) |
+| **Content-Type** | `application/json` |
+
+---
+
+## 📥 Params
+
+| Nama | Tipe | Wajib | Keterangan |
+|------|------|--------|-------------|
+| `hesdastore` | `string` | ✅ | `API Key` |
+| `jenis` | `string` | ✅ | Jenis (`pa, invite, bes`) pilih salah satu, `pa` untuk add pengelola `invite` untuk invite anggota `bes` untuk beli extra slot |
+
+---
+
+:::info 🧪 Response JSON
+
+Beberapa contoh response berdasarkan status transaksi:
+
+<Tabs>
+  <TabItem value="success" label="🟢 bes - Beli Extra Slot">
+    ```json
+    {
+        "status": true,
+        "message": "Data ditemukan",
+        "data": [
+            {
+                "package_code": "BELI_SLOT_AKRAB_BARU",
+                "jenis": "bes",
+                "package_name_show": "Unlock Slot Akrab Baru",
+                "package_description_show": "• Alternatif cara buat beli slot Tambahan Pengelola Paket Akrab tanpa membuka aplikasi MyXL.\r\n• <b>Sediakan Pulsa Minimal Rp20.000</b>\r\n• <b>Gunakan Bagi Yang Tahu Tahu Saja</b>",
+                "metode": 1,
+                "unik": null,
+                "no_need_login": "0",
+                "can_multi_trx": "1",
+                "harga_int": 0,
+                "harga": "Rp. 0",
+                "package_id": "VjlhZDVkTVc2OUpsdGFVaExpbXFldw",
+                "payment_method": [
+                    "PULSA"
+                ]
+            }
+        ]
+    }
+    ```
+  </TabItem>
+  <TabItem value="pa" label="🟢 pa - Add Pengelola">
+    ```json
+    {
+            "status": true,
+            "message": "Data ditemukan",
+            "data": [
+                {
+                    "package_code": "lkas90fwklkaibfwfn",
+                    "jenis": "pa",
+                    "package_name_show": "Jasa Tambah Pengelola Akrab",
+                    "package_description_show": null,
+                    "metode": 1,
+                    "unik": null,
+                    "no_need_login": null,
+                    "can_multi_trx": null,
+                    "harga_int": 1000,
+                    "harga": "Rp. 1.000",
+                    "package_id": "WkZ0eEdJbnpxWWRGbm1NeWhnb1NwQQ",
+                    "payment_method": []
+                }
+            ]
+        }
+    ```
+  </TabItem>
+  <TabItem value="invite" label="🟢 invite - Invite Pengelola">
+    ```json
+    {
+            "status": true,
+            "message": "Data ditemukan",
+            "data": [
+                {
+                    "package_code": "fkejnkwfokwf442jjn",
+                    "jenis": "invite",
+                    "package_name_show": "Jasa Invite Anggota",
+                    "package_description_show": null,
+                    "metode": 1,
+                    "unik": null,
+                    "no_need_login": null,
+                    "can_multi_trx": null,
+                    "harga_int": 500,
+                    "harga": "Rp. 500",
+                    "package_id": "UDIyQUYzdzh3elVEVDJ4WjdzSURoQQ",
+                    "payment_method": []
+                }
+            ]
+        }
+    ```
+  </TabItem>
+
+  <TabItem value="failed" label="🔴 Failed">
+    ```json
+    {
+        "status": false,
+        "message": "Error",
+        "data": []
+    }
+    ```
+  </TabItem>
+
+</Tabs>
+
+:::
+
+---

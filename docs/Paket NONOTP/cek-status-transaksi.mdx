@@ -1,0 +1,86 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+Cek Status Transaksi
+---
+Gunakan endpoint ini untuk melihat **Cek Status Transaksi**.
+
+---
+
+## 🧭 Endpoint
+| Atribut | Nilai |
+|----------|-------|
+| **URL** | `https://api.hesda-store.com/v2/cekStatus?hesdastore={API_KEY}&trx_id={trx_id}` |
+| **Method** | `GET` |
+| **Auth** | Basic Auth (`Authorization: email & password`) |
+| **Content-Type** | `application/json` |
+
+---
+
+## 📥 Params
+
+| Nama | Tipe | Wajib | Keterangan |
+|------|------|--------|-------------|
+| `hesdastore` | `string` | ✅ | `API Key` |
+| `trx_id` | `string` | ✅ | `TRX ID Kamu` |
+
+---
+
+:::info 🧪 Response JSON
+
+Beberapa contoh response berdasarkan status transaksi:
+
+<Tabs>
+  <TabItem value="success" label="🟢 Success">
+    ```json
+    {
+        "status": true,
+        "message": "Transaksi ditemukan",
+        "data": {
+            "package_id": "MTJxK2NHUjdhWEdsWDRCc1o2SkFFQQ",
+            "package_name": "Akrab Anggota SUPER BIG PROMO - RESMI XL AXIS",
+            "trx_id": "ZePOY0jgJK-YzYzYU",
+            "no_hp": "62878185022134",
+            "status": "SUCCESS"
+        }
+    }
+    ```
+  </TabItem>
+  <TabItem value="pending" label="🟡 Pending">
+    ```json
+    {
+        "status": true,
+        "message": "Transaksi ditemukan",
+        "data": {
+            "package_id": "MTJxK2NHUjdhWEdsWDRCc1o2SkFFQQ",
+            "package_name": "Akrab Anggota SUPER BIG PROMO - RESMI XL AXIS",
+            "trx_id": "YD6LewdDpF",
+            "no_hp": "0819989521",
+            "status": "PENDING"
+        }
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="failed" label="🔴 Failed">
+    ```json
+    {
+        "status": true,
+        "message": "Transaksi ditemukan",
+        "data": {
+            "package_id": "MTJxK2NHUjdhWEdsWDRCc1o2SkFFQQ",
+            "package_name": "Akrab Anggota SUPER BIG PROMO - RESMI XL AXIS",
+            "trx_id": "YD6LewdDpF",
+            "no_hp": "0819989521",
+            "status": "FAILED"
+        }
+    }
+    ```
+  </TabItem>
+
+</Tabs>
+
+:::
+
+---

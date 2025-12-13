@@ -1,0 +1,68 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+UNREG Paket
+---
+Gunakan endpoint ini untuk melakukan **UNREG PAKET**.
+
+---
+
+## 🧭 Endpoint
+| Atribut | Nilai |
+|----------|-------|
+| **URL** | `https://api.hesda-store.com/v2/unreg` |
+| **Method** | `POST` |
+| **Auth** | Basic Auth (`Authorization: email & password`) |
+| **Content-Type** | `application/json` |
+
+---
+
+## 📥 Body
+
+| Nama | Tipe | Wajib | Keterangan |
+|------|------|--------|-------------|
+| `hesdastore` | `string` | ✅ | `API Key` |
+| `no_hp` | `number` | ✅ | `Nomor XL kamu` |
+| `access_token` | `string` | ✅ | `dari Login Sms atau Get Access token by Authid` |
+| `encrypted_package_code` | `string` | ✅ | `diambil dari Cek Detail Paket` |
+| `name` | `string` | ✅ | `nama paket` |
+| `price_or_fee` | `number` | ✅ | `diambil dari harga_int di list paket unreg`|
+
+---
+
+:::info 🧪 Response JSON
+
+Beberapa contoh response berdasarkan status transaksi:
+
+<Tabs>
+<TabItem value="success" label="🟢 Sukses">
+    ```json
+    {
+        "statusCode": 200,
+        "status": true,
+        "message": "Paket berhasil di-stop. Untuk refresh daftar paket aktif, silakan klik tombol Cek Paket secara berkala!",
+        "data": {
+            "msisdn": "6287762883268",
+            "trx_id": "5cf79797-dd1b"
+        }
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="failed" label="🔴 Failed">
+    ```json
+    {
+        "statusCode": 200,
+        "status": false,
+        "message": "Terjadi kesalahan, pastikan nomor XL/AXIS/LIVEON yang kamu masukkan benar (terdaftar NIK & KK) dan mohon coba lagi! Error Message: User not found | Error Description: -",
+        "data": []
+    }
+    ```
+  </TabItem>
+
+</Tabs>
+
+:::
+
+---

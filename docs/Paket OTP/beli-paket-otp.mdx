@@ -1,0 +1,157 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+Beli Paket OTP
+---
+Gunakan endpoint ini untuk melakukan **Pembelian Paket OTP**.
+
+---
+
+## 🧭 Endpoint
+| Atribut | Nilai |
+|----------|-------|
+| **URL** | `https://api.hesda-store.com/v2/beli/otp` |
+| **Method** | `POST` |
+| **Auth** | Basic Auth (`Authorization: email & password`) |
+| **Content-Type** | `application/json` |
+
+---
+
+## 📥 Body
+
+| Nama | Tipe | Wajib | Keterangan |
+|------|------|--------|-------------|
+| `hesdastore` | `string` | ✅ | `API Key` |
+| `package_id` | `string` | ✅ | `package id yang ingin dibeli diambil dari list paket OTP` |
+| `access_token` | `string` | ✅ | `dari Login Sms atau Get Access token by Authid` |
+| `uri` | `string` | ✅ | `package_purchase_otp` |
+| `no_hp` | `number` | ✅ | `Nomor XL`|
+| `ewallet_number` | `number` | ✅ | `Khusus OVO diisi nomor OVO`|
+| `payment_method` | `string` | ✅ | `Pilih salah satu: PULSA/QRIS/DANA/SHOPEEPAY/OVO/GOPAY` |
+| `price_or_fee` | `string` | ✅ | `diambil dari harga_int di list paket otp` |
+| `url_callback` | `string` | ✅ | `URL Callback Anda (Isi Random URL Jika Beli OTP)` |
+
+---
+
+:::info 🧪 Response JSON
+
+Beberapa contoh response berdasarkan status transaksi:
+
+<Tabs>
+<TabItem value="success qris" label="🟢 Qris">
+    ```json
+    {
+        "statusCode": 200,
+        "status": true,
+        "message": "Silakan scan/upload QR di bawah ke E-Wallet/Mbanking Anda dan segera lakukan pembayaran! Abaikan jika sudah melakukan pembayaran.",
+        "data": {
+            "msisdn": "628180421121",
+            "package_id": "T01Ydk8zbWYzbkhDOFFqbXBXM21hQQ",
+            "nama_paket": " Xtra Combo Unlimited Turbo Super - Metode e-Wallet",
+            "trx_id": "66ecfd67-cdacadca-cdacda",
+            "status": "SUCCESS",
+            "have_deeplink": false,
+            "deeplink_data": {
+                "payment_method": "QRIS",
+                "deeplink_url": ""
+            },
+            "is_qris": true,
+            "qris_data": {
+                "qr_code": "00020101021226650013CO.XENDIT.WWW01189360084800000039760215qtQFhXV3crrxttp0303UME51370014ID.CO.QRIS.WWW0215ID20253920885505204509953033605405110005802ID5902XL6015JAKARTA SELATAN61051295062290525fvocnCJ7DCGvYaneIb3GKntmX6304E384",
+                "payment_expired_at": 1765202700,
+                "remaining_time": 298
+            }
+        }
+    }
+    ```
+  </TabItem>
+  <TabItem value="success dana" label="🟢 Dana">
+    ```json
+    {
+        "statusCode": 200,
+        "status": true,
+        "message": "Pastikan kamu punya aplikasi DANA dan segera bayar dengan klik tombol BAYAR di bawah ini melalui DANA.",
+        "data": {
+            "msisdn": "628180421121",
+            "package_id": "T01Ydk8zbWYzbkhDOFFqbXBXM21hQQ",
+            "nama_paket": " Xtra Combo Unlimited Turbo Super - Metode e-Wallet",
+            "trx_id": "66ecfd67-cdacadca-cdacda-cdacda",
+            "status": "SUCCESS",
+            "have_deeplink": true,
+            "deeplink_data": {
+                "payment_method": "DANA",
+                "deeplink_url": "https://m.dana.id/link/pay?bizNo=20250612111212800110166398854882612&timestamp=1749710285896&originSourcePlatform=IPG&mid=216620000035833566172&did=216650000204712460170&sid=216660000204589345173&sign=oRAioW22hK4OITNk80Bzk7ZelOOli5LkT%2FdXjURg4D8%2B%2BJJSpbK7FQQT9p0fScWB%2FITJyzEHcCZRody6deudhVAirDXMcKUgRiOZ2SqkSSXlwRNzk11hHnDxQXY6NKgDiDGVpZhUBU3FKrhdfyPId%2Blg07aK631cqQFbByqn9op%2But0%2FykD4QfR8sgz6z9%2BjIeZQBlCIDT8yPgA1H%2FhQTZAR%2BZBxbkODop1PbGmWtSBq49aUaixt5Sez65SUJPGnkDVQZJj9uWJLmNStOJ5tg8FLpQGAw4RQveIk%2BxdEO15zfOEzlVNA4n8ZiQb1q1Vpi71ZkIusn6D6u8sXRf2BLA%3D%3D&forceToH5=false&newRegistrationPage=true"
+            },
+            "is_qris": false,
+            "qris_data": []
+        }
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="success OVO" label="🟢 OVO">
+    ```json
+    {
+        "statusCode": 200,
+        "status": true,
+        "message": "Segera buka aplikasi OVO kamu dan klik prompt notifikasi yang muncul untuk melanjutkan pembayaran ke XL.",
+        "data": {
+            "msisdn": "628180421121",
+            "package_id": "T01Ydk8zbWYzbkhDOFFqbXBXM21hQQ",
+            "nama_paket": " Xtra Combo Unlimited Turbo Super - Metode e-Wallet",
+            "trx_id": "66ecfd67-cdacadca-cdacda-cdacda",
+            "status": "SUCCESS",
+            "have_deeplink": true,
+            "deeplink_data": {
+                "payment_method": "OVO",
+                "deeplink_url": ""
+            },
+            "is_qris": false,
+            "qris_data": []
+        }
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="success pulsa" label="🟢 Pulsa">
+    ```json
+    {
+        "statusCode": 200,
+        "status": true,
+        "message": "Transaksi Berhasil silahkan cek myxl atau SMS",
+        "data": {
+            "msisdn": "628180421121",
+            "package_id": "T01Ydk8zbWYzbkhDOFFqbXBXM21hQQ",
+            "nama_paket": " Xtra Combo Unlimited Turbo Super - Metode Pulsa",
+            "trx_id": "66ecfd67-ec36da-dadad",
+            "status": "SUCCESS",
+            "have_deeplink": true,
+            "deeplink_data": {
+                "payment_method": "PULSA",
+                "deeplink_url": ""
+            },
+            "is_qris": false,
+            "qris_data": []
+        }
+    }
+    ```
+  </TabItem>
+  
+
+  <TabItem value="failed" label="🔴 Failed">
+    ```json
+    {
+        "statusCode": 200,
+        "status": false,
+        "message": "Terjadi kesalahan, pastikan nomor XL/AXIS/LIVEON yang kamu masukkan benar (terdaftar NIK & KK) dan mohon coba lagi! Error Message: User not found | Error Description: -",
+        "data": []
+    }
+    ```
+  </TabItem>
+
+</Tabs>
+
+:::
+
+---

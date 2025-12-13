@@ -1,0 +1,93 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+List Paket OTP
+---
+Gunakan endpoint ini untuk melihat **List Paket OTP**.
+
+---
+
+## 🧭 Endpoint
+| Atribut | Nilai |
+|----------|-------|
+| **URL** | `https://api.hesda-store.com/v2/list_paket?hesdastore={APIKEY}&jenis=otp` |
+| **Method** | `GET` |
+| **Auth** | Basic Auth (`Authorization: email & password`) |
+| **Content-Type** | `application/json` |
+
+---
+
+## 📥 Params
+
+| Nama | Tipe | Wajib | Keterangan |
+|------|------|--------|-------------|
+| `hesdastore` | `string` | ✅ | `API Key` |
+| `jenis` | `string` | ✅ | Jenis metode (`otp`) |
+
+---
+
+:::info 🧪 Response JSON
+
+Beberapa contoh response berdasarkan status transaksi:
+
+<Tabs>
+  <TabItem value="success" label="🟢 Success">
+    ```json
+    {
+        "status": true,
+        "message": "Data ditemukan",
+        "data": [
+            {
+                "package_code": "dac06dd11e66ae88c09d43f8866ddd5e",
+                "jenis": "otp",
+                "package_name_show": "Addon Xtra Combo Lite Viu, Facebook, Instagram FUP 190GB - Metode e-Wallet",
+                "package_description_show": "- <b>Wajib punya paket Xtra Combo Lite</b>.\r\n- Jika tidak bisa dibeli, silakan coba lagi terus dalam beberapa menit (harus sabar).\r\n- JIKA MASIH BELUM BISA DAN PEMBAYARAN ANDA DI-REFUND OLEH XL, CEK VIA DIAL *808# pergi ke menu Stop Paket/Langganan. Pastikan tidak ada paket Addon Combo Lite sebelumnya yang masih nyangkut. Jika ada, unreg dulu addonnya. Tidak bisa diunreg? Terpaksa ganti kartu lainnya. Mungkin untuk alternatif trik lainnya kamu bisa pakai paket xtra combo plus + Addon 22GB Vidio/FB/IG/YouTube (bisa dibeli sepuasnya).\r\n- Membutuhkan Saldo E-wallet Dana Rp6.000 (akan terpotong segini).\r\n- Klik tombol \"Bayar\" setelah beli paket.\r\n- Tidak bisa digabung dengan Addon Xtra Combo Lite varian lainnya, harap unreg dulu via dial *808# jika ada.\r\n- Masa aktif paket ini akan mengikuti sisa masa aktif paket Xtra Combo Lite saat ini.\r\n- FUP 190GB. Tidak dapat diakumulasi. Jika kamu membelinya ulang sebelum FUP habis maka kuota FUP akan tereset ke posisi semula.",
+                "metode": 1,
+                "unik": null,
+                "no_need_login": "0",
+                "can_multi_trx": "0",
+                "harga_int": 500,
+                "harga": "Rp. 500",
+                "package_id": "SG1rejY1UnBsTDh6TlZkNlhOOHp1dw",
+                "payment_method": [
+                    "PULSA"
+                ]
+            },
+            {
+                "package_code": "e4b9610293057bf3bc0bc35288e22faa",
+                "jenis": "otp",
+                "package_name_show": "Addon Xtra Combo Lite Netflix, Facebook, Instagram FUP 190GB - Metode Pulsa",
+                "package_description_show": "- <b>Wajib punya paket Xtra Combo Lite</b>.\r\n- Jika tidak bisa dibeli, silakan coba lagi terus dalam beberapa menit (harus sabar).\r\n- JIKA MASIH BELUM BISA DAN PEMBAYARAN ANDA DI-REFUND OLEH XL, CEK VIA DIAL *808# pergi ke menu Stop Paket/Langganan. Pastikan tidak ada paket Addon Combo Lite sebelumnya yang masih nyangkut. Jika ada, unreg dulu addonnya. Tidak bisa diunreg? Terpaksa ganti kartu lainnya. Mungkin untuk alternatif trik lainnya kamu bisa pakai paket xtra combo plus + Addon 22GB Vidio/FB/IG/YouTube (bisa dibeli sepuasnya).\r\n- Membutuhkan Saldo E-wallet Dana Rp6.000 (akan terpotong segini).\r\n- Klik tombol \"Bayar\" setelah beli paket.\r\n- Tidak bisa digabung dengan Addon Xtra Combo Lite varian lainnya, harap unreg dulu via dial *808# jika ada.\r\n- Masa aktif paket ini akan mengikuti sisa masa aktif paket Xtra Combo Lite saat ini.\r\n- FUP 190GB. Tidak dapat diakumulasi. Jika kamu membelinya ulang sebelum FUP habis maka kuota FUP akan tereset ke posisi semula.",
+                "metode": 1,
+                "unik": null,
+                "no_need_login": "0",
+                "can_multi_trx": "0",
+                "harga_int": 500,
+                "harga": "Rp. 500",
+                "package_id": "RXQ5V09yTWFqUDJubUZBaGpab1dZZw",
+                "payment_method": [
+                    "DANA",
+                    "QRIS"
+                ]
+            }
+        ]
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="failed" label="🔴 Failed">
+    ```json
+    {
+        "status": false,
+        "message": "Error",
+        "data": []
+    }
+    ```
+  </TabItem>
+
+</Tabs>
+
+:::
+
+---

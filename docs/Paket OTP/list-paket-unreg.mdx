@@ -1,0 +1,74 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+List Paket UNREG
+---
+Gunakan endpoint ini untuk melihat **Package id UNREG**.
+
+---
+
+## 🧭 Endpoint
+| Atribut | Nilai |
+|----------|-------|
+| **URL** | `https://api.hesda-store.com/v2/list_paket?hesdastore={APIKEY}&jenis=unreg` |
+| **Method** | `GET` |
+| **Auth** | Basic Auth (`Authorization: email & password`) |
+| **Content-Type** | `application/json` |
+
+---
+
+## 📥 Params
+
+| Nama | Tipe | Wajib | Keterangan |
+|------|------|--------|-------------|
+| `hesdastore` | `string` | ✅ | `API Key` |
+| `jenis` | `string` | ✅ | Jenis metode (`unreg`) |
+
+---
+
+:::info 🧪 Response JSON
+
+Beberapa contoh response berdasarkan status transaksi:
+
+<Tabs>
+  <TabItem value="success" label="🟢 Success">
+    ```json
+    {
+        "status": true,
+        "message": "Data ditemukan",
+        "data": [
+            {
+                "package_code": "S4ZXhQzruUE35HCdtfJPpPqbRzghPhdM",
+                "jenis": "unreg",
+                "package_name_show": "Unreg",
+                "package_description_show": null,
+                "metode": 1,
+                "unik": null,
+                "no_need_login": null,
+                "can_multi_trx": null,
+                "harga_int": 500,
+                "harga": "Rp. 500",
+                "package_id": "Ri9SRHB3Nk5yYkJjR1BiU0tXbXk5dw",
+                "payment_method": []
+                }
+            ]
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="failed" label="🔴 Failed">
+    ```json
+    {
+        "status": false,
+        "message": "Error",
+        "data": []
+    }
+    ```
+  </TabItem>
+
+</Tabs>
+
+:::
+
+---

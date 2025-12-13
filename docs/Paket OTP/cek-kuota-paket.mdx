@@ -1,0 +1,84 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+Cek Kuota Paket
+---
+Gunakan endpoint ini untuk melihat **Detail Kuota**.
+
+---
+
+## 🧭 Endpoint
+| Atribut | Nilai |
+|----------|-------|
+| **URL** | `https://api.hesda-store.com/v2/detail_paket?hesdastore={APIKEY}&access_token={accestoken}` |
+| **Method** | `GET` |
+| **Auth** | Basic Auth (`Authorization: email & password`) |
+| **Content-Type** | `application/json` |
+
+---
+
+## 📥 Params
+
+| Nama | Tipe | Wajib | Keterangan |
+|------|------|--------|-------------|
+| `hesdastore` | `string` | ✅ | `API Key` |
+| `access_token` | `string` | ✅ | access token dari Login SMS atau Login By Authid |
+
+---
+
+:::info 🧪 Response JSON
+
+Beberapa contoh response berdasarkan status transaksi:
+
+<Tabs>
+  <TabItem value="success" label="🟢 Success">
+    ```json
+    {
+        "statusCode": 200,
+        "status": true,
+        "message": "SUCCESS",
+        "data": {
+            "msisdn": "62818012109090",
+            "text": "Berikut ini adalah daftar paket/kuota kamu yang aktif saat ini untuk nomor XL 6281804631727. Penting: Mungkin paket tidak langsung muncul setelah beberapa detik pembelian paket, tunggu hingga 1 menitan dan klik ulang tombol Cek Paket untuk melihat update hasilnya.",
+            "quotas": [
+                {
+                    "encrypted_package_code": "U2-GiXte9J6JZvLTVKl7U7q2P8aSytqauH67hs8D81O9jjkpZ83No95wI8iwNu",
+                    "name": "45GB Setahun",
+                    "expired_at": "2025-03-29 23:59",
+                    "benefits": [
+                        {
+                            "name": "Kuota Bonus WhatsApp",
+                            "information": "",
+                            "quota": "2.75 GB",
+                            "remaining_quota": "2.75 GB"
+                        },
+                        {
+                            "name": "Kuota Utama",
+                            "information": "",
+                            "quota": "1 GB",
+                            "remaining_quota": "1 GB"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="failed" label="🔴 Failed">
+    ```json
+    {
+        "status": false,
+        "message": "Error",
+        "data": []
+    }
+    ```
+  </TabItem>
+
+</Tabs>
+
+:::
+
+---

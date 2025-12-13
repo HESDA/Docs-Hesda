@@ -1,0 +1,65 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+Minta OTP
+---
+Gunakan endpoint ini untuk melakukan **Minta OTP**.
+
+---
+
+## 🧭 Endpoint
+| Atribut | Nilai |
+|----------|-------|
+| **URL** | `https://api.hesda-store.com/v2/get_otp` |
+| **Method** | `POST` |
+| **Auth** | Basic Auth (`Authorization: email & password`) |
+| **Content-Type** | `application/json` |
+
+---
+
+## 📥 Body
+
+| Nama | Tipe | Wajib | Keterangan |
+|------|------|--------|-------------|
+| `hesdastore` | `string` | ✅ | `API Key` |
+| `no_hp` | `number` | ✅ | Nomor XL |
+| `metode` | `string` | ✅ | Jenis metode (`OTP`) |
+
+---
+
+:::info 🧪 Response JSON
+
+Beberapa contoh response berdasarkan status transaksi:
+
+<Tabs>
+  <TabItem value="success" label="🟢 Success">
+    ```json
+    {
+        "statusCode": 200,
+        "status": true,
+        "message": "Berhasil mengirim kode OTP, silakan cek SMS di nomor XL kamu!",
+        "data": {
+            "auth_id": "28b028f7-69bd-417e-8510-691d23df7d25",
+            "can_resend_in": 60
+        }
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="failed" label="🔴 Failed">
+    ```json
+    {
+        "statusCode": 200,
+        "status": false,
+        "message": "Terjadi kesalahan, pastikan nomor XL/AXIS/LIVEON yang kamu masukkan benar (terdaftar NIK & KK) dan mohon coba lagi! Error Message: User not found | Error Description: -",
+        "data": []
+    }
+    ```
+  </TabItem>
+
+</Tabs>
+
+:::
+
+---

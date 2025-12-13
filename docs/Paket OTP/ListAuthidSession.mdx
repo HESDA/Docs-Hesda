@@ -1,0 +1,64 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+List Authid Session
+---
+Gunakan endpoint ini untuk melihat **List Authid Session**.
+
+---
+
+## 🧭 Endpoint
+| Atribut | Nilai |
+|----------|-------|
+| **URL** | `https://api.hesda-store.com/v2/cek_sesi_login?hesdastore={API_KEY}&no_hp={no_hp}` |
+| **Method** | `GET` |
+| **Auth** | Basic Auth (`Authorization: email & password`) |
+| **Content-Type** | `application/json` |
+
+---
+
+## 📥 Params
+
+| Nama | Tipe | Wajib | Keterangan |
+|------|------|--------|-------------|
+| `hesdastore` | `string` | ✅ | `API Key` |
+| `no_hp` | `string` | ✅ | `Nomor XL Kamu` |
+
+---
+
+:::info 🧪 Response JSON
+
+Beberapa contoh response berdasarkan status transaksi:
+
+<Tabs>
+  <TabItem value="success" label="🟢 Success">
+    ```json
+    {
+        "status": true,
+        "message": "Data ditemukan",
+        "data": [
+            {
+                "auth_id": "603312:eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJhZTQzZmFiZi1iOGFlLTQxYmUtOGUwOS1iODJkYWM3NGU4MjAifQ.eyJleHAiOjE3NjU0NTkwNjgsImlhdCI6MTc1OTQ1NTYwMCwianRpIjoiYTUxY2VlY2MtMGMyNy00YTg1LTljZDgtYTRlYjdiNzdmNjM1IiLmNpYW0ueGxheGlhdGEuY28uaWQvcmVhbG1zL3hsLWNpYW0iLCJhdWQiOiJodHRwczovL2dlZGUuY2lhbS54bGF4aWF0YS5jby5pZC9yZWFsbXMveGwtY2lhbSIsInN1YiI6ImY3MjdiYjMzLWVhODEtNGQyMS05ZTc0LTA0ZTI4ZGE4NWY3NSIsInR5cCI6IlJlZnJlc2giLCJhenAiOiI5ZmM5N2VkMS02YTMwLTQ4ZDUtOTUxNi02MGM1M2NlM2ExMzUiLCJzZXNzaW9uX3N0YXRlIjoiMDM4ZWY1ZjctYWFhMS00OWViLTkwMWMtMjk0OTNjMjMzMDc3Iiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInNpZCI6IjAzOGVmNWY3LWFhYTEtNDllYi05MDFjLTI5NDkzYzIzMzA3NyJ9.u6kL-vvYHQTwWe_hAEPz6CPxw9AM1wpHP6-HbGT_HKU",
+                "time": "2025-10-03 08:39 WIB"
+            }
+        ]
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="failed" label="🔴 Failed">
+    ```json
+    {
+        "status": false,
+        "message": "Nomor tidak ditemukan!",
+        "data": []
+    }
+    ```
+  </TabItem>
+
+</Tabs>
+
+:::
+
+---
